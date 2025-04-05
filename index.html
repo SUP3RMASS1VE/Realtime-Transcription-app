@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeechSync | Realtime Transcription</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --success: #06d6a0;
+            --warning: #ffd166;
+            --error: #ef476f;
+            --background: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-primary: #212529;
+            --text-secondary: #495057;
+            --text-muted: #6c757d;
+            --border: #dee2e6;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --transition: all 0.2s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --success: #06d6a0;
+            --warning: #ffd166;
+            --error: #ef476f;
+            --background: #121212;
+            --card-bg: #1e1e1e;
+            --text-primary: #f8f9fa;
+            --text-secondary: #e9ecef;
+            --text-muted: #adb5bd;
+            --border: #2d3748;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            font-size: 1.125rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: var(--transition);
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-title svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .status {
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            background: var(--border);
+            color: var(--text-secondary);
+        }
+
+        .status-disconnected {
+            background: var(--text-muted);
+            color: white;
+        }
+
+        .status-connecting {
+            background: var(--warning);
+            color: var(--text-primary);
+        }
+
+        .status-recording {
+            background: var(--primary);
+            color: white;
+            animation: pulse-opacity 2s infinite;
+        }
+
+        .status-processing {
+            background: var(--secondary);
+            color: white;
+        }
+
+        @keyframes pulse-opacity {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .transcript-container {
+            height: 350px;
+            overflow-y: auto;
+            padding: 1rem;
+            background: var(--background);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+        }
+
+        .transcript-container:empty::before {
+            content: "Your transcription will appear here...";
+            color: var(--text-muted);
+            font-style: italic;
+            display: block;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .transcript-entry {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--primary);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            min-width: 160px;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 0, 0, 0.05);
+            color: var(--text-primary);
+        }
+
+        [data-theme="dark"] .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .pulse-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height: 24px;
+        }
+
+        .pulse-bar {
+            width: 4px;
+            height: 100%;
+            background-color: white;
+            border-radius: 2px;
+            animation: pulse 1.2s ease-in-out infinite;
+            transform: scaleY(var(--scale, 0.3));
+            transform-origin: center bottom;
+        }
+
+        .pulse-bar:nth-child(1) { animation-delay: 0.0s; }
+        .pulse-bar:nth-child(2) { animation-delay: 0.1s; }
+        .pulse-bar:nth-child(3) { animation-delay: 0.2s; }
+        .pulse-bar:nth-child(4) { animation-delay: 0.3s; }
+        .pulse-bar:nth-child(5) { animation-delay: 0.4s; }
+
+        @keyframes pulse {
+            0%, 100% { transform: scaleY(0.3); }
+            50% { transform: scaleY(1); }
+        }
+
+        .upload-section {
+            margin-top: 2rem;
+        }
+
+        .upload-container {
+            border: 2px dashed var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            background: var(--card-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            box-shadow: inset 0 0 0 2px transparent;
+        }
+
+        .upload-container:hover {
+            border-color: var(--primary);
+            background: rgba(67, 97, 238, 0.05);
+        }
+
+        [data-theme="dark"] .upload-container {
+            border-color: #3d4852;
+        }
+
+        [data-theme="dark"] .upload-container:hover {
+            border-color: var(--primary);
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        .upload-icon {
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .upload-icon svg {
+            width: 48px;
+            height: 48px;
+            stroke-width: 1.5;
+        }
+
+        [data-theme="dark"] .upload-icon {
+            color: var(--primary);
+            opacity: 0.9;
+        }
+
+        .upload-text {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .upload-hint {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-sm);
+            color: white;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: var(--shadow-md);
+            animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+            max-width: 400px;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; pointer-events: none; }
+        }
+
+        .toast.error { background-color: var(--error); }
+        .toast.warning { background-color: var(--warning); color: var(--text-primary); }
+        .toast.success { background-color: var(--success); }
+
+        .toast-close {
+            background: transparent;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            margin-left: auto;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .toast-close:hover {
+            opacity: 1;
+        }
+
+        /* Custom scrollbar styling */
+        .transcript-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .transcript-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .transcript-container::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .transcript-container::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1rem;
+            }
+            
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .card-header {
+                padding: 1rem;
+            }
+            
+            .card-content {
+                padding: 1rem;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        .upload-container.dragover {
+            border-color: var(--accent);
+            background: rgba(247, 37, 133, 0.05);
+        }
+
+        [data-theme="dark"] .upload-container.dragover {
+            border-color: var(--accent);
+            background: rgba(247, 37, 133, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="logo">SpeechSync</h1>
+            <p class="tagline">Real-time speech transcription powered by advanced AI</p>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="22"></line>
+                    </svg>
+                    Live Transcription
+                </h2>
+                <div id="status" class="status">Disconnected</div>
+            </div>
+            <div class="card-content">
+                <div class="transcript-container" id="transcript"></div>
+                <div class="controls">
+                    <button class="btn" id="startButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="22"></line>
+                        </svg>
+                        Start Recording
+                    </button>
+                    <button class="btn btn-secondary" id="clearButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        </svg>
+                        Clear Transcript
+                    </button>
+                    <button class="btn btn-secondary" id="downloadButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Download Text
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card upload-section">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Upload Audio File
+                </h2>
+            </div>
+            <div class="card-content">
+                <label for="audioFile" class="upload-container" id="dropArea">
+                    <div class="upload-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </div>
+                    <h3 class="upload-text">Drag & drop an audio file or click to browse</h3>
+                    <p class="upload-hint">Supports MP3, WAV, M4A, FLAC (max 100MB)</p>
+                    <input type="file" id="audioFile" accept="audio/*" />
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 SpeechSync. Powered by Whisper & FastRTC technology.</p>
+    </footer>
+
+    <div id="toast" class="toast" style="display: none;">
+        <span id="toast-message"></span>
+        <button class="toast-close" id="toast-close">×</button>
+    </div>
+
+    <script>
+        // Set up dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme preference or use the system preference
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && prefersDarkScheme.matches)) {
+            document.body.setAttribute('data-theme', 'dark');
+            updateThemeIcon(true);
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.body.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateThemeIcon(!isDark);
+        });
+        
+        function updateThemeIcon(isDark) {
+            themeToggle.innerHTML = isDark 
+                ? '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>'
+                : '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+        }
+
+        // Main WebRTC and transcription functionality
+        let peerConnection;
+        let webrtc_id;
+        let audioContext, analyser, audioSource;
+        let audioLevel = 0;
+        let animationFrame;
+        let eventSource;
+
+        const startButton = document.getElementById('startButton');
+        const clearButton = document.getElementById('clearButton');
+        const downloadButton = document.getElementById('downloadButton');
+        const transcriptDiv = document.getElementById('transcript');
+        const statusElement = document.getElementById('status');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        const toastClose = document.getElementById('toast-close');
+
+        // Toast notification functions
+        function showToast(message, type = 'error') {
+            toastMessage.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.style.display = 'flex';
+            
+            // Hide toast after 5 seconds
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 5000);
+        }
+        
+        toastClose.addEventListener('click', () => {
+            toast.style.display = 'none';
+        });
+
+        function updateStatus(status) {
+            statusElement.textContent = status;
+            statusElement.className = 'status status-' + status.toLowerCase().replace(' ', '-');
+        }
+
+        function handleMessage(event) {
+            // Handle any WebRTC data channel messages if needed
+            const eventJson = JSON.parse(event.data);
+            if (eventJson.type === "error") {
+                showToast(eventJson.message, 'error');
+            }
+            console.log('Received message:', event.data);
+        }
+
+        function updateButtonState() {
+            if (peerConnection && (peerConnection.connectionState === 'connecting' || peerConnection.connectionState === 'new')) {
+                startButton.innerHTML = `
+                    <div class="spinner" style="margin-right: 8px;"></div>
+                    <span>Connecting...</span>
+                `;
+                startButton.disabled = true;
+                updateStatus('Connecting');
+            } else if (peerConnection && peerConnection.connectionState === 'connected') {
+                startButton.innerHTML = `
+                    <div class="pulse-container" style="margin-right: 8px;">
+                        <div class="pulse-bar"></div>
+                        <div class="pulse-bar"></div>
+                        <div class="pulse-bar"></div>
+                        <div class="pulse-bar"></div>
+                        <div class="pulse-bar"></div>
+                    </div>
+                    <span>Stop Recording</span>
+                `;
+                startButton.disabled = false;
+                updateStatus('Recording');
+            } else {
+                startButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="22"></line>
+                    </svg>
+                    Start Recording
+                `;
+                startButton.disabled = false;
+                updateStatus('Disconnected');
+            }
+        }
+
+        function setupAudioVisualization(stream) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioContext.createAnalyser();
+            audioSource = audioContext.createMediaStreamSource(stream);
+            audioSource.connect(analyser);
+            analyser.fftSize = 64;
+            const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+            function updateAudioLevel() {
+                analyser.getByteFrequencyData(dataArray);
+                const average = Array.from(dataArray).reduce((a, b) => a + b, 0) / dataArray.length;
+                audioLevel = average / 255;
+
+                // Update the pulse bars
+                const pulseBars = document.querySelectorAll('.pulse-bar');
+                if (pulseBars.length > 0) {
+                    pulseBars.forEach(bar => {
+                        // Random variation for a more natural effect
+                        const variation = Math.random() * 0.3 + 0.7;
+                        bar.style.setProperty('--scale', 0.3 + audioLevel * variation);
+                    });
+                }
+
+                animationFrame = requestAnimationFrame(updateAudioLevel);
+            }
+            updateAudioLevel();
+        }
+
+        async function setupWebRTC() {
+            const config = __RTC_CONFIGURATION__;
+            peerConnection = new RTCPeerConnection(config);
+
+            const timeoutId = setTimeout(() => {
+                showToast("Connection is taking longer than usual. Are you on a VPN?", "warning");
+            }, 5000);
+
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    audio: true
+                });
+
+                setupAudioVisualization(stream);
+
+                stream.getTracks().forEach(track => {
+                    peerConnection.addTrack(track, stream);
+                });
+
+                // Add connection state change listener
+                peerConnection.addEventListener('connectionstatechange', () => {
+                    console.log('connectionstatechange', peerConnection.connectionState);
+                    if (peerConnection.connectionState === 'connected') {
+                        clearTimeout(timeoutId);
+                    } else if (peerConnection.connectionState === 'failed' || 
+                               peerConnection.connectionState === 'disconnected' || 
+                               peerConnection.connectionState === 'closed') {
+                        showToast('Connection lost. Please try again.', 'error');
+                        stop();
+                    }
+                    updateButtonState();
+                });
+
+                // Create data channel for messages
+                const dataChannel = peerConnection.createDataChannel('text');
+                dataChannel.onmessage = handleMessage;
+
+                // Create and send offer
+                const offer = await peerConnection.createOffer();
+                await peerConnection.setLocalDescription(offer);
+
+                await new Promise((resolve) => {
+                    if (peerConnection.iceGatheringState === "complete") {
+                        resolve();
+                    } else {
+                        const checkState = () => {
+                            if (peerConnection.iceGatheringState === "complete") {
+                                peerConnection.removeEventListener("icegatheringstatechange", checkState);
+                                resolve();
+                            }
+                        };
+                        peerConnection.addEventListener("icegatheringstatechange", checkState);
+                    }
+                });
+
+                webrtc_id = Math.random().toString(36).substring(7);
+
+                const response = await fetch('/webrtc/offer', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        sdp: peerConnection.localDescription.sdp,
+                        type: peerConnection.localDescription.type,
+                        webrtc_id: webrtc_id
+                    })
+                });
+
+                const serverResponse = await response.json();
+
+                if (serverResponse.status === 'failed') {
+                    showToast(serverResponse.meta.error === 'concurrency_limit_reached'
+                        ? `Too many connections. Maximum limit is ${serverResponse.meta.limit}`
+                        : serverResponse.meta.error, 'error');
+                    stop();
+                    return;
+                }
+
+                await peerConnection.setRemoteDescription(serverResponse);
+
+                // Create event stream to receive transcripts
+                eventSource = new EventSource('/transcript?webrtc_id=' + webrtc_id);
+                eventSource.addEventListener("output", (event) => {
+                    appendTranscript(event.data);
+                });
+            } catch (err) {
+                clearTimeout(timeoutId);
+                console.error('Error setting up WebRTC:', err);
+                showToast('Failed to access microphone. Please check permissions and try again.', 'error');
+                stop();
+            }
+        }
+
+        function appendTranscript(text) {
+            const entry = document.createElement('div');
+            entry.className = 'transcript-entry';
+            entry.textContent = text;
+            transcriptDiv.appendChild(entry);
+            transcriptDiv.scrollTop = transcriptDiv.scrollHeight;
+        }
+
+        function stop() {
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+            }
+            if (audioContext) {
+                audioContext.close();
+                audioContext = null;
+                analyser = null;
+                audioSource = null;
+            }
+            if (peerConnection) {
+                if (peerConnection.getTransceivers) {
+                    peerConnection.getTransceivers().forEach(transceiver => {
+                        if (transceiver.stop) {
+                            transceiver.stop();
+                        }
+                    });
+                }
+
+                if (peerConnection.getSenders) {
+                    peerConnection.getSenders().forEach(sender => {
+                        if (sender.track && sender.track.stop) sender.track.stop();
+                    });
+                }
+
+                peerConnection.close();
+                peerConnection = null;
+            }
+            // Close EventSource connection
+            if (eventSource) {
+                eventSource.close();
+                eventSource = null;
+            }
+            audioLevel = 0;
+            updateButtonState();
+        }
+
+        startButton.addEventListener('click', () => {
+            if (!peerConnection || peerConnection.connectionState === 'closed' || 
+                peerConnection.connectionState === 'disconnected' || 
+                peerConnection.connectionState === 'failed') {
+                setupWebRTC();
+            } else {
+                stop();
+            }
+        });
+
+        clearButton.addEventListener('click', () => {
+            transcriptDiv.innerHTML = '';
+        });
+
+        downloadButton.addEventListener('click', () => {
+            if (!transcriptDiv.textContent.trim()) {
+                showToast('No transcript to download', 'warning');
+                return;
+            }
+            
+            const transcript = Array.from(transcriptDiv.querySelectorAll('.transcript-entry'))
+                .map(entry => entry.textContent)
+                .join('\n\n');
+            
+            const blob = new Blob([transcript], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'transcript.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast('Transcript downloaded successfully', 'success');
+        });
+
+        // File upload functionality
+        const audioFileInput = document.getElementById('audioFile');
+        const dropArea = document.getElementById('dropArea');
+
+        // Drag and drop functionality
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => {
+                dropArea.classList.add('dragover');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, () => {
+                dropArea.classList.remove('dragover');
+            }, false);
+        });
+
+        dropArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            
+            if (files.length > 0) {
+                audioFileInput.files = files;
+                handleFileUpload(files[0]);
+            }
+        }
+
+        // Add explicit click handler for the drop area
+        dropArea.addEventListener('click', function(e) {
+            // Prevent the click if the target is already the input
+            if (e.target !== audioFileInput) {
+                e.preventDefault();
+                audioFileInput.click();
+            }
+        });
+
+        audioFileInput.addEventListener('change', () => {
+            if (audioFileInput.files.length > 0) {
+                handleFileUpload(audioFileInput.files[0]);
+            }
+        });
+
+        async function handleFileUpload(file) {
+            // Check file size (100MB limit)
+            if (file.size > 100 * 1024 * 1024) {
+                showToast('File size exceeds 100MB limit', 'error');
+                return;
+            }
+            
+            // Check file type
+            const validTypes = ['audio/mpeg', 'audio/wav', 'audio/mp4', 'audio/x-m4a', 'audio/flac'];
+            if (!validTypes.includes(file.type)) {
+                showToast('Unsupported file type. Please upload MP3, WAV, M4A, or FLAC', 'warning');
+            }
+            
+            // Display uploading state
+            const originalContent = dropArea.innerHTML;
+            dropArea.innerHTML = `
+                <div class="upload-icon">
+                    <div class="spinner" style="margin: 0 auto;"></div>
+                </div>
+                <h3 class="upload-text">Transcribing ${file.name}</h3>
+                <p class="upload-hint">This may take a moment...</p>
+            `;
+            
+            const formData = new FormData();
+            formData.append('file', file);
+            
+            try {
+                updateStatus('Processing');
+                const response = await fetch('/upload-audio', {
+                    method: 'POST',
+                    body: formData,
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    // Clear previous transcript and show new one
+                    transcriptDiv.innerHTML = '';
+                    appendTranscript(result.transcript);
+                    
+                    showToast('Transcription completed successfully!', 'success');
+                } else {
+                    showToast(result.error || 'Failed to transcribe file', 'error');
+                }
+            } catch (error) {
+                console.error('Error uploading file:', error);
+                showToast('Failed to upload file. Please try again.', 'error');
+            } finally {
+                // Reset upload area
+                dropArea.innerHTML = originalContent;
+                updateStatus('Disconnected');
+            }
+        }
+
+        // Initialize
+        updateButtonState();
+    </script>
+</body>
+
+</html>

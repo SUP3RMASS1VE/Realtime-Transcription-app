@@ -1,0 +1,294 @@
+2025-04-05 18:40:45 - root - INFO - Logging configured with level: INFO
+2025-04-05 18:40:45 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 18:40:45 - __main__ - INFO - Using attention: sdpa
+2025-04-05 18:40:45 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 18:41:05 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 18:41:05 - __main__ - INFO - Model warmup complete
+2025-04-05 18:41:05 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 18:41:20 - httpx - INFO - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-04-05 18:41:21 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-04-05 18:42:35 - root - INFO - Logging configured with level: INFO
+2025-04-05 18:42:35 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 18:42:35 - __main__ - INFO - Using attention: sdpa
+2025-04-05 18:42:35 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 18:42:37 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 18:42:38 - __main__ - INFO - Model warmup complete
+2025-04-05 18:42:38 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 18:42:40 - httpx - INFO - HTTP Request: GET https://checkip.amazonaws.com/ "HTTP/1.1 200 "
+2025-04-05 18:42:40 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-04-05 18:44:03 - root - INFO - Logging configured with level: INFO
+2025-04-05 18:44:03 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 18:44:03 - __main__ - INFO - Using attention: sdpa
+2025-04-05 18:44:03 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 18:44:06 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 18:44:06 - __main__ - INFO - Model warmup complete
+2025-04-05 18:44:06 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 18:44:08 - __main__ - INFO - Launching FastAPI server
+2025-04-05 18:44:08 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-04-05 18:44:23 - aioice.ice - INFO - Connection(0) Remote candidate "d93de707-47e7-4d68-a4ad-e65a2a016a48.local" could not be resolved
+2025-04-05 18:44:23 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.165.9 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 18:44:23 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.2.176 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 18:44:23 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.49.47 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 18:44:23 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.185.182 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 18:44:23 - aioice.ice - INFO - Connection(0) Discovered peer reflexive candidate Candidate(ONKMtOgO3D 1 udp 1845501695 192.168.1.175 59855 typ prflx)
+2025-04-05 18:44:23 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 63981) -> ('192.168.1.175', 59855)) State.WAITING -> State.IN_PROGRESS
+2025-04-05 18:44:23 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 63981) -> ('192.168.1.175', 59855)) State.IN_PROGRESS -> State.SUCCEEDED
+2025-04-05 18:44:23 - aioice.ice - INFO - Connection(0) ICE completed
+2025-04-05 18:44:25 - __main__ - INFO - Sample rate: 48000Hz, Shape: (1, 57600)
+2025-04-05 18:44:29 - __main__ - INFO - Sample rate: 48000Hz, Shape: (1, 172800)
+2025-04-05 18:47:03 - root - INFO - Logging configured with level: INFO
+2025-04-05 18:47:03 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 18:47:03 - __main__ - INFO - Using attention: sdpa
+2025-04-05 18:47:03 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 18:47:05 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 18:47:06 - __main__ - INFO - Model warmup complete
+2025-04-05 18:47:06 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 18:47:07 - __main__ - INFO - Launching FastAPI server
+2025-04-05 18:47:08 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-04-05 18:47:20 - __main__ - INFO - Transcribing uploaded file: Beat It ROCK.mp3
+2025-04-05 18:50:19 - root - INFO - Logging configured with level: INFO
+2025-04-05 18:50:19 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 18:50:19 - __main__ - INFO - Using attention: sdpa
+2025-04-05 18:50:19 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 18:50:22 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 18:50:22 - __main__ - INFO - Model warmup complete
+2025-04-05 18:50:22 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 18:50:24 - __main__ - INFO - Launching FastAPI server
+2025-04-05 18:50:24 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-04-05 18:51:18 - root - INFO - Logging configured with level: INFO
+2025-04-05 18:51:18 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 18:51:18 - __main__ - INFO - Using attention: sdpa
+2025-04-05 18:51:18 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 18:51:20 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 18:51:21 - __main__ - INFO - Model warmup complete
+2025-04-05 18:51:21 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 18:51:23 - __main__ - INFO - Launching FastAPI server
+2025-04-05 18:51:23 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-04-05 18:51:43 - __main__ - INFO - Transcribing uploaded file: JadDeluxe Talking.wav
+2025-04-05 18:53:36 - root - INFO - Logging configured with level: INFO
+2025-04-05 18:53:36 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 18:53:36 - __main__ - INFO - Using attention: sdpa
+2025-04-05 18:53:36 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 18:53:39 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 18:53:39 - __main__ - INFO - Model warmup complete
+2025-04-05 18:53:39 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 18:53:41 - __main__ - INFO - Launching FastAPI server
+2025-04-05 18:54:49 - root - INFO - Logging configured with level: INFO
+2025-04-05 18:54:49 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 18:54:49 - __main__ - INFO - Using attention: sdpa
+2025-04-05 18:54:49 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 18:54:51 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 18:54:51 - __main__ - INFO - Model warmup complete
+2025-04-05 18:54:51 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 18:54:53 - __main__ - INFO - Launching FastAPI server
+2025-04-05 18:56:34 - root - INFO - Logging configured with level: INFO
+2025-04-05 18:56:34 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 18:56:34 - __main__ - INFO - Using attention: sdpa
+2025-04-05 18:56:34 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 18:56:36 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 18:56:36 - __main__ - INFO - Model warmup complete
+2025-04-05 18:56:36 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 18:56:38 - __main__ - INFO - Launching FastAPI server
+2025-04-05 18:56:52 - __main__ - INFO - Transcribing uploaded file: Beat It ROCK.mp3
+2025-04-05 18:58:42 - root - INFO - Logging configured with level: INFO
+2025-04-05 18:58:42 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 18:58:42 - __main__ - INFO - Using attention: sdpa
+2025-04-05 18:58:42 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 18:58:45 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 18:58:45 - __main__ - INFO - Model warmup complete
+2025-04-05 18:58:45 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 18:58:47 - __main__ - INFO - Launching FastAPI server
+2025-04-05 18:58:52 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.165.9 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 18:58:52 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.2.176 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 18:58:52 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.49.47 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 18:58:52 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.185.182 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 18:58:52 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 54892) -> ('192.168.1.175', 62885)) State.FROZEN -> State.WAITING
+2025-04-05 18:58:52 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 54892) -> ('192.168.1.175', 62885)) State.WAITING -> State.IN_PROGRESS
+2025-04-05 18:58:52 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 54892) -> ('192.168.1.175', 62885)) State.IN_PROGRESS -> State.SUCCEEDED
+2025-04-05 18:58:52 - aioice.ice - INFO - Connection(0) ICE completed
+2025-04-05 18:59:01 - __main__ - INFO - Transcribing uploaded file: Beat It ROCK.mp3
+2025-04-05 18:59:36 - root - INFO - Logging configured with level: INFO
+2025-04-05 18:59:36 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 18:59:36 - __main__ - INFO - Using attention: sdpa
+2025-04-05 18:59:36 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 18:59:39 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 18:59:39 - __main__ - INFO - Model warmup complete
+2025-04-05 18:59:39 - httpx - INFO - HTTP Request: GET http://localhost:7860/gradio_api/startup-events "HTTP/1.1 200 OK"
+2025-04-05 18:59:39 - httpx - INFO - HTTP Request: HEAD http://localhost:7860/ "HTTP/1.1 200 OK"
+2025-04-05 18:59:40 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-04-05 19:02:03 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:02:03 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:02:03 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:02:03 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:02:06 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:02:06 - __main__ - INFO - Model warmup complete
+2025-04-05 19:02:07 - httpx - INFO - HTTP Request: GET https://api.gradio.app/pkg-version "HTTP/1.1 200 OK"
+2025-04-05 19:09:40 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:09:40 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:09:40 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:09:40 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:09:44 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:09:44 - __main__ - INFO - Model warmup complete
+2025-04-05 19:09:44 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:09:46 - __main__ - INFO - Launching FastAPI server
+2025-04-05 19:10:23 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.165.9 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:10:23 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.2.176 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:10:23 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.49.47 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:10:23 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.185.182 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:10:23 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 58888) -> ('192.168.1.175', 56166)) State.FROZEN -> State.WAITING
+2025-04-05 19:10:23 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 58888) -> ('192.168.1.175', 56166)) State.WAITING -> State.IN_PROGRESS
+2025-04-05 19:10:23 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 58888) -> ('192.168.1.175', 56166)) State.IN_PROGRESS -> State.SUCCEEDED
+2025-04-05 19:10:23 - aioice.ice - INFO - Connection(0) ICE completed
+2025-04-05 19:10:25 - __main__ - INFO - Sample rate: 48000Hz, Shape: (1, 86400)
+2025-04-05 19:10:26 - __main__ - INFO - Sample rate: 48000Hz, Shape: (1, 57600)
+2025-04-05 19:10:28 - __main__ - INFO - Sample rate: 48000Hz, Shape: (1, 57600)
+2025-04-05 19:11:50 - __main__ - INFO - Transcribing uploaded file: Beat It ROCK.mp3
+2025-04-05 19:14:39 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:14:39 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:14:39 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:14:39 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:14:42 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:14:42 - __main__ - INFO - Model warmup complete
+2025-04-05 19:14:42 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:14:44 - __main__ - INFO - Launching FastAPI server
+2025-04-05 19:15:06 - __main__ - INFO - Transcribing uploaded file: Beat It ROCK.mp3
+2025-04-05 19:15:28 - __main__ - INFO - Transcribing uploaded file: JadDeluxe Talking.wav
+2025-04-05 19:15:37 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.165.9 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:15:37 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.2.176 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:15:37 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.49.47 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:15:37 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.185.182 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:15:37 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 64794) -> ('192.168.1.175', 50692)) State.FROZEN -> State.WAITING
+2025-04-05 19:15:37 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 64794) -> ('192.168.1.175', 50692)) State.WAITING -> State.IN_PROGRESS
+2025-04-05 19:15:37 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 64794) -> ('192.168.1.175', 50692)) State.IN_PROGRESS -> State.SUCCEEDED
+2025-04-05 19:15:37 - aioice.ice - INFO - Connection(0) ICE completed
+2025-04-05 19:15:40 - __main__ - INFO - Sample rate: 48000Hz, Shape: (1, 86400)
+2025-04-05 19:20:30 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:20:30 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:20:30 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:20:30 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:20:32 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:20:33 - __main__ - INFO - Model warmup complete
+2025-04-05 19:20:33 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:21:23 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:21:23 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:21:23 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:21:23 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:21:26 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:21:26 - __main__ - INFO - Model warmup complete
+2025-04-05 19:21:26 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:22:37 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:22:37 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:22:37 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:22:37 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:22:40 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:22:40 - __main__ - INFO - Model warmup complete
+2025-04-05 19:22:40 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:23:46 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:23:46 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:23:46 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:23:46 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:23:48 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:23:49 - __main__ - INFO - Model warmup complete
+2025-04-05 19:23:49 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:24:55 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:24:55 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:24:55 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:24:55 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:24:57 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:24:57 - __main__ - INFO - Model warmup complete
+2025-04-05 19:24:57 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:24:59 - __main__ - INFO - Launching FastAPI server
+2025-04-05 19:25:12 - __main__ - INFO - Transcribing uploaded file: JadDeluxe Talking.wav with language: english
+2025-04-05 19:25:20 - __main__ - INFO - Transcribing uploaded file: JadDeluxe Talking.wav with language: english
+2025-04-05 19:25:38 - __main__ - INFO - Transcribing uploaded file: JadDeluxe Talking.wav with language: english
+2025-04-05 19:25:48 - __main__ - INFO - Setting language for 465cj to: german
+2025-04-05 19:26:19 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:26:19 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:26:19 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:26:19 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:26:21 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:26:22 - __main__ - INFO - Model warmup complete
+2025-04-05 19:26:22 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:26:23 - __main__ - INFO - Launching FastAPI server
+2025-04-05 19:37:32 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:37:32 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:37:32 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:37:32 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:37:35 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:37:35 - __main__ - INFO - Model warmup complete
+2025-04-05 19:37:35 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:38:33 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:38:33 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:38:33 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:38:33 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:38:35 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:38:35 - __main__ - INFO - Model warmup complete
+2025-04-05 19:38:35 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:38:37 - __main__ - INFO - Launching FastAPI server
+2025-04-05 19:38:47 - __main__ - INFO - Transcribing uploaded file: Beat It ROCK.mp3
+2025-04-05 19:39:27 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.165.9 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:39:27 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.2.176 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:39:27 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.49.47 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:39:27 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.185.182 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:39:27 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 65240) -> ('192.168.1.175', 65277)) State.FROZEN -> State.WAITING
+2025-04-05 19:39:27 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 65240) -> ('192.168.1.175', 65277)) State.WAITING -> State.IN_PROGRESS
+2025-04-05 19:39:27 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 65240) -> ('192.168.1.175', 65277)) State.IN_PROGRESS -> State.SUCCEEDED
+2025-04-05 19:39:28 - aioice.ice - INFO - Connection(0) ICE completed
+2025-04-05 19:39:31 - __main__ - INFO - Sample rate: 48000Hz, Shape: (1, 57600)
+2025-04-05 19:39:44 - __main__ - INFO - Transcribing uploaded file: JadDeluxe Talking.wav
+2025-04-05 19:51:07 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:51:07 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:51:07 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:51:07 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:51:09 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:51:10 - __main__ - INFO - Model warmup complete
+2025-04-05 19:51:10 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:51:12 - __main__ - INFO - Launching FastAPI server
+2025-04-05 19:51:20 - __main__ - INFO - Transcribing uploaded file: Beat It ROCK.wav
+2025-04-05 19:53:45 - __main__ - INFO - Transcribing uploaded file: JadDeluxe Talking.flac
+2025-04-05 19:55:50 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:55:50 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:55:50 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:55:50 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:55:53 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:55:53 - __main__ - INFO - Model warmup complete
+2025-04-05 19:55:53 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:55:55 - __main__ - INFO - Launching FastAPI server
+2025-04-05 19:55:59 - __main__ - INFO - Transcribing uploaded file: JadDeluxe Talking.wav
+2025-04-05 19:56:19 - __main__ - INFO - Transcribing uploaded file: JadDeluxe Talking.flac
+2025-04-05 19:56:59 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.165.9 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:56:59 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.2.176 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:56:59 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.49.47 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:56:59 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.185.182 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 19:56:59 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 55786) -> ('192.168.1.175', 64882)) State.FROZEN -> State.WAITING
+2025-04-05 19:56:59 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 55786) -> ('192.168.1.175', 64882)) State.WAITING -> State.IN_PROGRESS
+2025-04-05 19:56:59 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 55786) -> ('192.168.1.175', 64882)) State.IN_PROGRESS -> State.SUCCEEDED
+2025-04-05 19:56:59 - aioice.ice - INFO - Connection(0) ICE completed
+2025-04-05 19:57:02 - __main__ - INFO - Sample rate: 48000Hz, Shape: (1, 115200)
+2025-04-05 19:58:16 - root - INFO - Logging configured with level: INFO
+2025-04-05 19:58:16 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 19:58:16 - __main__ - INFO - Using attention: sdpa
+2025-04-05 19:58:16 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 19:58:18 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 19:58:19 - __main__ - INFO - Model warmup complete
+2025-04-05 19:58:19 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 19:58:20 - __main__ - INFO - Launching FastAPI server
+2025-04-05 19:59:00 - __main__ - INFO - Transcribing uploaded file: Chester Bennington.flac
+2025-04-05 20:01:31 - root - INFO - Logging configured with level: INFO
+2025-04-05 20:01:31 - __main__ - INFO - Using device: cuda, torch_dtype: torch.float16, np_dtype: <class 'numpy.float16'>
+2025-04-05 20:01:31 - __main__ - INFO - Using attention: sdpa
+2025-04-05 20:01:31 - __main__ - INFO - Loading Whisper model: openai/whisper-large-v3-turbo
+2025-04-05 20:01:34 - __main__ - INFO - Warming up Whisper model with dummy input
+2025-04-05 20:01:34 - __main__ - INFO - Model warmup complete
+2025-04-05 20:01:34 - __main__ - INFO - Initializing FastRTC stream
+2025-04-05 20:01:36 - __main__ - INFO - Launching FastAPI server
+2025-04-05 20:06:32 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.165.9 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 20:06:32 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.2.176 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 20:06:32 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.49.47 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 20:06:32 - aioice.ice - INFO - Connection(0) Could not bind to 169.254.185.182 - [WinError 10049] The requested address is not valid in its context
+2025-04-05 20:06:32 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 57402) -> ('192.168.1.175', 60817)) State.FROZEN -> State.WAITING
+2025-04-05 20:06:32 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 57402) -> ('192.168.1.175', 60817)) State.WAITING -> State.IN_PROGRESS
+2025-04-05 20:06:32 - aioice.ice - INFO - Connection(0) Check CandidatePair(('192.168.1.175', 57402) -> ('192.168.1.175', 60817)) State.IN_PROGRESS -> State.SUCCEEDED
+2025-04-05 20:06:32 - aioice.ice - INFO - Connection(0) ICE completed
+2025-04-05 20:06:37 - __main__ - INFO - Sample rate: 48000Hz, Shape: (1, 144000)
+2025-04-05 20:06:43 - __main__ - INFO - Transcribing uploaded file: JadDeluxe Talking.wav
