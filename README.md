@@ -39,6 +39,7 @@ git clone https://github.com/SUP3RMASS1VE/realtime-transcription-fastrtc.git
 cd realtime-transcription-fastrtc
 
 # Install dependencies
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
 pip install -r requirements.txt
 ```
 
@@ -47,7 +48,7 @@ pip install -r requirements.txt
 ## 🚀 Running the App
 
 ```bash
-python app.py
+python main.py
 ```
 
 - Visit `http://localhost:7860` to access the web interface.
