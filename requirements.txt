@@ -3,5 +3,4 @@ fastrtc==0.0.15
 fastrtc[vad]==0.0.15
 python-dotenv==1.0.1
 transformers==4.49.0
-torch==2.6.0
-torchaudio==2.6.0
+gradio
