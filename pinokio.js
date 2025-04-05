@@ -2,7 +2,7 @@ const path = require('path')
 module.exports = {
   version: "3.6",
   title: "Realtime-Transcription",
-  description: "",
+  description: "A real-time speech-to-text web app",
   icon: "icon.png",
   menu: async (kernel, info) => {
     let installed = info.exists("env")
