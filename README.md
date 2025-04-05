@@ -31,8 +31,12 @@ A real-time speech-to-text web app using [Whisper](https://github.com/openai/whi
 
 ---
 
-## 🛠️ Installation
+## Installation
+ 
+## Option 1: 
+Install via [Pinokio](https://pinokio.computer).  
 
+## Option 2
 ```bash
 # Clone the repo
 git clone https://github.com/SUP3RMASS1VE/realtime-transcription-fastrtc.git
