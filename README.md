@@ -1,4 +1,3 @@
-Here's a clean and informative `README.md` you can use for your project:
 
 ---
 
@@ -9,6 +8,7 @@ A real-time speech-to-text web app using [Whisper](https://github.com/openai/whi
 🔗 **Live Code**: [SUP3RMASS1VE/realtime-transcription-fastrtc](https://github.com/SUP3RMASS1VE/realtime-transcription-fastrtc)
 
 > ⚡️ _This is a modified fork of [sofi444/realtime-transcription-fastrtc](https://github.com/sofi444/realtime-transcription-fastrtc). Huge thanks to them for their incredible foundational work!_
+![Screenshot 2025-04-05 200740](https://github.com/user-attachments/assets/daf8e498-fef3-4d01-b5b6-b8fd700a953f)
 
 ---
 
