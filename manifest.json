@@ -1,0 +1,21 @@
+{
+  "name": "SpeechSync - Realtime Transcription",
+  "short_name": "SpeechSync",
+  "description": "Real-time speech transcription powered by advanced AI.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f9fa",
+  "theme_color": "#4361ee",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
