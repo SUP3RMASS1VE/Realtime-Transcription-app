@@ -7,7 +7,8 @@ import warnings
 import gradio as gr
 import numpy as np
 from fastapi import FastAPI, UploadFile, File
-from fastapi.responses import StreamingResponse, HTMLResponse, JSONResponse
+from fastapi.responses import StreamingResponse, HTMLResponse, JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from fastrtc import (
     AdditionalOutputs,
     ReplyOnPause,
